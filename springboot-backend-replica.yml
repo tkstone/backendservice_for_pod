@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tkstone-springboot-backend-replica-deployment
+  labels:
+    app: tkstone-springboot-backend-replica
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tkstone-springboot-backend
+  template:
+    metadata:
+      labels:
+        app: tkstone-springboot-backend
+    spec:
+      containers:
+      - name: stone-springboot-backend
+        image: tkstone.springboot.backend:20210127
+        ports:
+        - containerPort: 8080
+
